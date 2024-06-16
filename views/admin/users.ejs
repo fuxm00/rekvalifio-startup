@@ -1,0 +1,13 @@
+<%- include('./parts/_header') %>
+
+<h3>Seznam uživatelů</h3>
+<% if ((users.length >= 1)) { %>
+    <%- include('./parts/_usersList') %>
+<% } else { %>
+    <div class="content-container">
+        <p>žádné</p>
+    </div>
+<% } %>
+
+<%- include('./parts/scripts/_toast') %>
+<%- include('./parts/_footer') %>

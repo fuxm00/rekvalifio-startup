@@ -1,0 +1,224 @@
+<div class="content-container">
+    <form action="<%= summary ? "/course/place-order/" : "/course/order-proceed/" %><%= course.id %>"
+          method="post" id="order-form">
+
+        <h2>Informace o kurzu</h2>
+        <p class="mb-0">Název: <%= course.title %></p>
+        <p class="mb-0">Cena: <%= course.price %> Kč za jednoho účastníka</p>
+        <p class="mb-0">Termín: Bude stanoven podle potřeb zájemců</p>
+
+        <hr class="form-line">
+        <h2>Účastníci</h2>
+        <div>
+            <div id="participants">
+
+                <% if (participants) { %>
+                    <div>
+                        <label>
+                            <div>Jména a příjmení účastníka/ů <p class="inline text-red-500">*</p></div>
+                            <input name="participant1"
+                                   value="<%= participants[0] ? participants[0].name : "" %>" <%= summary ? "disabled" : "" %>>
+                        </label>
+                    </div>
+                    <% for (let i = 1; i < participants.length; i++) { %>
+                        <div>
+                            <label>
+                                <input name="participant<%= i + 1 %>"
+                                       value="<%= participants[i].name %>" <%= summary ? "disabled" : "" %>>
+                            </label>
+                        </div>
+                    <% } %>
+
+                <% } else { %>
+                    <div>
+                        <label>
+                            <div>Jméno a příjmení účastníka <p class="inline text-red-500">*</p></div>
+                            <input name="participant1" value="" <%= summary ? "disabled" : "" %>>
+                        </label>
+                    </div>
+                <% } %>
+            </div>
+
+            <div id="participants-button"></div>
+
+        </div>
+
+        <hr class="form-line">
+        <h2>Fakturační údaje</h2>
+        <div class="inputs-box">
+            <div>
+                <label>
+                    <div>Firma <p class="inline text-red-500">*</p></div>
+                    <input name="billingFirm" value="<%= billingFirm %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Jméno a příjmení <p class="inline text-red-500">*</p></div>
+                    <input name="billingName" value="<%= billingName %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Ulice <p class="inline text-red-500">*</p></div>
+                    <input name="billingStreet" value="<%= billingStreet %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Město <p class="inline text-red-500">*</p></div>
+                    <input name="billingCity" value="<%= billingCity %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>PSČ <p class="inline text-red-500">*</p></div>
+                    <input name="billingPostal" value="<%= billingPostal %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>IČ</div>
+                    <input name="billingIc" value="<%= billingIc %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>DIČ</div>
+                    <input name="billingDic" value="<%= billingDic %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+        </div>
+
+        <hr class="form-line">
+        <h2>Poštovní adresa</h2>
+        <div class="inputs-box">
+            <div>
+                <p>Shoduje-li se adresa s fakturační, není nutné vyplňovat.</p>
+            </div>
+            <div>
+                <label>
+                    <div>Firma</div>
+                    <input name="mailingFirm" value="<%= mailingFirm %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Jméno a příjmení</div>
+                    <input name="mailingName" value="<%= mailingName %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Ulice</div>
+                    <input name="mailingStreet" value="<%= mailingStreet %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Město</div>
+                    <input name="mailingCity" value="<%= mailingCity %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>PSČ</div>
+                    <input name="mailingPostal" value="<%= mailingPostal %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+        </div>
+
+        <hr class="form-line">
+        <h2>Kontaktní informace</h2>
+        <div class="inputs-box">
+            <div>
+                <label>
+                    <div>E-mail <p class="inline text-red-500">*</p></div>
+                    <input name="email" value="<%= email %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>Telefon <p class="inline text-red-500">*</p></div>
+                    <input name="phone" value="<%= phone %>" <%= summary ? "disabled" : "" %>>
+                </label>
+            </div>
+        </div>
+
+        <hr class="form-line">
+        <h2>Poznámka</h2>
+        <div class="inputs-box">
+            <div>
+                <div>
+                    <p>Pro sdělení doplňujících informací</p>
+                </div>
+                <label class="form-label">
+                    <div>Poznámky</div>
+                    <textarea name="note" <%= summary ? "disabled" : "" %>><%= note %></textarea>
+                </label>
+            </div>
+        </div>
+
+        <% if (!summary) { %>
+            <hr class="form-line">
+            <h2>Obchodní podmínky</h2>
+            <div class="inputs-box">
+                <div>
+                    <label>
+                        <input name="approval"
+                               class="check-box"
+                               type="checkbox">
+                        souhlasím s <a href="/conditions" target="_blank" class="link-item">obchodními podmínkami
+                            společnosti</a>
+                        <p class="inline text-red-500">*</p>
+                    </label>
+                </div>
+            </div>
+        <% } %>
+
+        <% if (summary) { %>
+            <hr class="form-line">
+            <h2>Platební informace</h2>
+            <p>Celková cena: <%= finalPrice %> Kč</p>
+        <% } %>
+
+        <div class="order-button-container mt-8">
+            <button type='submit'
+                    class="button-square button-blue"><%= summary ? "Dokončit objednávku" : "Pokračovat v objednávce" %></button>
+        </div>
+    </form>
+
+    <% if (!summary) { %>
+        <script>
+            let currentParticipants = 1
+
+            function createInput() {
+                let div = document.createElement('div')
+
+                let label = document.createElement('label')
+                label.className = 'form-label'
+                div.appendChild(label)
+                label.appendChild(document.createElement("div"))
+
+                let input = document.createElement('input');
+                currentParticipants++
+                input.name = `participant${currentParticipants}`
+                label.appendChild(input)
+
+                let participants = document.getElementById("participants");
+                participants.appendChild(div);
+            }
+
+            let button = document.createElement('button');
+            button.textContent = 'další účastník';
+            button.type = 'button';
+            button.className = 'button-soft-blue button-square'
+
+            button.addEventListener('click', () => createInput());
+
+            let form = document.getElementById("participants-button");
+            form.appendChild(button);
+        </script>
+    <% } %>
+
+</div>

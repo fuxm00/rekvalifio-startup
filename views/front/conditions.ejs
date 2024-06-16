@@ -1,0 +1,15 @@
+<%- include('./parts/_header') %>
+<%- include('./parts/_navbar') %>
+
+<div class="flex-container flex-space-between content-container">
+    <div>
+        <%- content ? content : "Obsah nezadán" %>
+    </div>
+    <div id="home-offers">
+        <%- include('./parts/_homeOffers') %>
+    </div>
+</div>
+
+
+
+<%- include('./parts/_footer') %>

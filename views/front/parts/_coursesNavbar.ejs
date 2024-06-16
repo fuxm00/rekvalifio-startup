@@ -1,0 +1,10 @@
+<div id="courses-navbar">
+    <div class="mt-4 ml-2">
+        <a href="/courses" class="button-round <%= !filter ? "button-blue" : "button-soft-blue" %>">Všechny</a>
+        <% for (const type of types) { %>
+            <a href="/courses?filter=<%= type.title %>"
+               class="button-round <%= filter === type.title ? "button-blue" : "button-soft-blue"%>"><%= type.title %></a>
+        <% } %>
+    </div>
+
+</div>

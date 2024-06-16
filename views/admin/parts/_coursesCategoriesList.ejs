@@ -1,0 +1,23 @@
+<div class="content-container">
+    <hr>
+    <% for (const category of categories) { %>
+        <div class="list">
+            <div class="flex-horizontal">
+                <a href="/admin/courses/categories/<%= category.id %>" class="button-square button-blue">Kategorie
+                    č. <%= category.id %></a>
+                <div>
+                    Název: <%= category.title %>
+                </div>
+                <div>
+                    Typ: <%= category.type.title %>
+                </div>
+                <a href="/course-category/<%= category.id %>" target="_blank" class="list-link">odkaz</a>
+            </div>
+
+            <div>
+                <a href="/admin/courses/remove-category/<%= category.id %>" class="button-square button-red">smazat</a>
+            </div>
+        </div>
+        <hr>
+    <% } %>
+</div>

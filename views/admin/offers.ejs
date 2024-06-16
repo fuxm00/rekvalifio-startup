@@ -1,0 +1,27 @@
+<%- include('./parts/_header') %>
+
+<h2>Správa nabídek</h2>
+<div class="content-container">
+
+    <div>
+        <a href="/admin/offers" class="button-round <%= marked === "offers" ? "button-blue" : "button-soft-blue" %>">Aktuální</a>
+        <a href="/admin/expired-offers"
+           class="button-round <%= marked === "expired" ? "button-blue" : "button-soft-blue" %>">Minulé</a>
+    </div>
+
+    <% if (!expired) { %>
+        <%- include('./parts/_offerForm') %>
+    <% } %>
+
+    <h3>Seznam nabídek</h3>
+    <% if ((offers.length >= 1)) { %>
+        <%- include('./parts/_offerList') %>
+    <% } else { %>
+        <div class="content-container">
+            <p>žádné</p>
+        </div>
+    <% } %>
+</div>
+
+<%- include('./parts/scripts/_toast') %>
+<%- include('./parts/_footer') %>

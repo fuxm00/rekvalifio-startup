@@ -1,0 +1,123 @@
+<div class="content-container">
+    <h3>Logo</h3>
+
+    <form action="/admin/content/change-logo" method="post" enctype="multipart/form-data">
+        <input type="file" name="logo">
+        <button type="submit" class="button-square button-blue m-[22px]">Nahrát</button>
+        <p>Aktuální logo:</p>
+        <% if (logoLink) { %>
+            <img id="logo" src="/img/upload/<%= logoLink %>" class="border border-black">
+        <% } else { %>
+            <p>nenahráno</p>
+        <% } %>
+    </form>
+
+    <form action="/admin/content/change-social-links" method="post">
+        <h3>Odkazy na sociální sítě</h3>
+        <div class="flex-horizontal">
+            <label>
+                <div>Facebook:</div>
+                <input type="text" name="facebookLink"
+                       placeholder="zadej odkaz"
+                       class="input"
+                       value="<%= facebookLink ? facebookLink : "" %>">
+            </label>
+            <div>
+                <button type="submit" class="button-square button-blue mt20">Upravit</button>
+            </div>
+        </div>
+        <div class="flex-horizontal">
+            <label>
+                <div>Instagram:</div>
+                <input type="text" name="instagramLink"
+                       placeholder="zadej odkaz"
+                       class="input"
+                       value="<%= instagramLink ? instagramLink : "" %>">
+            </label>
+            <div>
+                <button type="submit" class="button-square button-blue mt20">Upravit</button>
+            </div>
+        </div>
+        <div class="flex-horizontal">
+            <label>
+                <div>X:</div>
+                <input type="text" name="xLink"
+                       placeholder="zadej odkaz"
+                       class="input"
+                       value="<%= xLink ? xLink : "" %>">
+            </label>
+            <div>
+                <button type="submit" class="button-square button-blue mt20">Upravit</button>
+            </div>
+        </div>
+    </form>
+
+
+    <form action="/admin/content/change-home-texts" method="post">
+
+        <h3>Domů obsah</h3>
+        <textarea id="homeContent" name="homeContent"></textarea>
+        <div class="center-button">
+            <button type="submit" class="button-square button-blue mt20">Upravit</button>
+        </div>
+
+        <h3>Kurzy obsah</h3>
+        <textarea id="coursesContent" name="coursesContent"></textarea>
+        <div class="center-button">
+            <button type="submit" class="button-square button-blue mt20">Upravit</button>
+        </div>
+
+        <h3>Kontakty obsah</h3>
+        <textarea id="contactsContent" name="contactsContent"></textarea>
+        <div class="center-button">
+            <button type="submit" class="button-square button-blue mt20">Upravit</button>
+        </div>
+
+        <h3>Ochrana osobních údajů</h3>
+        <textarea id="gdprContent" name="gdprContent"></textarea>
+        <div class="center-button">
+            <button type="submit" class="button-square button-blue mt20">Upravit</button>
+        </div>
+
+        <h3>Obchodní podmínky</h3>
+        <textarea id="conditionsContent" name="conditionsContent"></textarea>
+        <div class="center-button">
+            <button type="submit" class="button-square button-blue mt20">Upravit</button>
+        </div>
+    </form>
+
+
+    <script>
+        const toolbarButtons = ['fullscreen', '|', 'bold', 'italic', 'underline', '|', 'fontFamily', 'fontSize', '|', 'paragraphFormat', '|', 'align', 'formatOL', 'formatUL', '|', 'insertLink', '|', 'insertHR', '|', 'undo', 'redo']
+
+        new FroalaEditor('#homeContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- homeContent %>');
+        })
+
+        new FroalaEditor('#coursesContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- coursesContent %>');
+        })
+
+        new FroalaEditor('#contactsContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- contactsContent %>');
+        })
+
+        new FroalaEditor('#gdprContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- gdprContent %>');
+        })
+
+        new FroalaEditor('#conditionsContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- conditionContent %>');
+        })
+    </script>
+</div>

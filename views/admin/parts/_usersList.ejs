@@ -1,0 +1,31 @@
+<div class="content-container">
+    <hr>
+    <% for (const user of users) { %>
+        <div class="list">
+            <div class="flex-horizontal">
+                <div>
+                    Uživatel č. <%= user.id %> <%= user.id === signedInId ? "(Vy)" : null %>
+                </div>
+                <div>
+                    <p class="inline">E-mail</p>
+                    <a href="mailto:<%= user.mail %>"><%= user.mail %></a>
+                </div>
+            </div>
+            <% if (user.id !== signedInId) { %>
+                <div class="flex-horizontal">
+                    <div>
+                        <% if (user.isApproved) { %>
+                            <a href="/admin/users/restrict/<%= user.id %>" class="button-square button-soft-blue">zakázat</a>
+                        <% } else { %>
+                            <a href="/admin/users/approve/<%= user.id %>" class="button-square button-blue">povolit</a>
+                        <% } %>
+                    </div>
+                    <div>
+                        <a href="/admin/users/remove/<%= user.id %>" class="button-square button-red">smazat</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <hr>
+    <% } %>
+</div>

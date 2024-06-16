@@ -1,0 +1,22 @@
+<%- include('./parts/_header') %>
+
+<h2>Správa kurzů typy</h2>
+<div class="content-container">
+
+    <%- include('./parts/_coursesNavbar') %>
+
+    <%- include('./parts/_coursesTypesForm') %>
+
+    <h3>Seznam typů</h3>
+    <% if ((types.length >= 1)) { %>
+        <%- include('./parts/_coursesTypesList') %>
+    <% } else { %>
+        <div class="content-container">
+            <p>žádné</p>
+        </div>
+    <% } %>
+
+</div>
+
+<%- include('./parts/scripts/_toast') %>
+<%- include('./parts/_footer') %>

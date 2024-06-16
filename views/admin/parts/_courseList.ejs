@@ -1,0 +1,25 @@
+<div class="content-container">
+    <hr>
+    <% for (const course of courses) { %>
+        <div class="list">
+            <div class="flex-horizontal">
+                <a href="/admin/courses/<%= course.id %>" class="button-square button-blue">Kurz č. <%= course.id %></a>
+                <div>
+                    Název: <%= course.title %>
+                </div>
+                <div>
+                    Kategorie: <%= course.category.title %>
+                </div>
+                <div>
+                    Cena: <%= course.price %> Kč
+                </div>
+                <a href="/course/<%= course.id %>" target="_blank" class="list-link">odkaz</a>
+            </div>
+
+            <div>
+                <a href="/admin/courses/remove-course/<%= course.id %>" class="button-square button-red">smazat</a>
+            </div>
+        </div>
+        <hr>
+    <% } %>
+</div>

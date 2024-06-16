@@ -1,0 +1,48 @@
+<div class="content-container">
+    <hr>
+    <% for (const order of orders) { %>
+        <div class="list">
+            <div class="flex-horizontal flex-wrap">
+                <a href="/admin/orders/<%= order.id %>" class="button-square button-blue">
+                    Objednávka č. <%= order.id %>.
+                </a>
+                <div>
+                    Od: <%= order.billingAddress.firm ? order.billingAddress.firm : order.billingAddress.name %>
+                </div>
+                <div>
+                    Vytvořeno: <%= order.formatedDate %>
+                </div>
+            </div>
+            <div class="flex-horizontal">
+                <div>
+                    <% if (!archivedList) { %>
+                        <% if (order.completed) { %>
+                            <a href="/admin/orders/unCompleteOrder/<%= order.id %>">
+                                <img src="/img/checkboxYes.png" class="min-w-[24px] max-w-[24px]">
+                            </a>
+                        <% } else { %>
+                            <a href="/admin/orders/completeOrder/<%= order.id %>">
+                                <img src="/img/checkboxNo.png" class="min-w-[24px] max-w-[24px]">
+                            </a>
+                        <% } %>
+                    <% } %>
+                </div>
+                <div>
+                    <% if (archivedList) { %>
+                        <a href="/admin/orders/unArchiveOrder/<%= order.id %>" class="button-square button-soft-blue">odarchivovat</a>
+                    <% } else { %>
+                        <a href="/admin/orders/archiveOrder/<%= order.id %>"
+                           class="button-square button-soft-blue">archivovat</a>
+                    <% } %>
+                </div>
+                <div>
+                    <% if (!archivedList) { %>
+                        <a href="/admin/orders/delete/<%= order.id %>" class="button-square button-red">smazat</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+    <% } %>
+</div>

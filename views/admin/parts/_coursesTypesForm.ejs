@@ -1,0 +1,32 @@
+<h3>
+    <% if (type) { %>
+        Upravit typ č. <%= type.id%>: <%= type.title %>
+    <% } else { %>
+        Přidat typ
+    <% } %>
+</h3>
+
+<div class="content-container">
+    <form action='/admin/courses/<%= type ? `edit-type/${type.id}` : "add-type" %>' method='post'>
+        <div>
+            <label>
+                <div>Název</div>
+
+                <input type="text" name="title"
+                       placeholder="<%= type ? type.title : "název typu" %>"
+                       class="input"
+                       value="<%= type ? type.title : "" %>">
+            </label>
+        </div>
+
+        <div class="center-button">
+            <button type='submit' class="button-square button-blue mt20">
+                <% if (type) { %>
+                    Upravit
+                <% } else { %>
+                    Přidat
+                <% } %>
+            </button>
+        </div>
+    </form>
+</div>

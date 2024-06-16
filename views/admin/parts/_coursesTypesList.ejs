@@ -1,0 +1,19 @@
+<div class="content-container">
+    <hr>
+    <% for (const type of types) { %>
+        <div class="list">
+            <div class="flex-horizontal">
+                <a href="/admin/courses/types/<%= type.id %>" class="button-square button-blue">Typ
+                    č. <%= type.id %></a>
+                <div>
+                    Název: <%= type.title %>
+                </div>
+                <a href="/courses?filter=<%= type.title %>" target="_blank" class="list-link">odkaz</a>
+            </div>
+            <div>
+                <a href="/admin/courses/remove-type/<%= type.id %>" class="button-square button-red">smazat</a>
+            </div>
+        </div>
+        <hr>
+    <% } %>
+</div>

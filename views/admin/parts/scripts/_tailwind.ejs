@@ -1,0 +1,291 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<style type="text/tailwindcss">
+    @layer utilities {
+
+    }
+
+    @layer components {
+        :root {
+            --grey2: rgba(0, 0, 0, 0.2);
+            --red: rgb(217, 29, 64);
+            --darkerRed: rgb(125, 17, 40);
+
+            --blue-primary: rgb(99, 102, 241);
+            --blue-primary-dark: rgb(67, 69, 164);
+
+            --blue-soft: rgb(238 242 255);
+            --blue-soft-dark: rgb(224, 231, 255);
+            --blue-soft-text: rgb(79 70 229)
+        }
+
+        .master-container {
+            margin: 0 250px 0 250px;
+
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content-container {
+            margin: 10px 20px 10px 20px;
+        }
+
+        .body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #footer {
+            margin-top: auto;
+            margin-bottom: 15px;
+        }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .mt10 {
+            margin: 10px 0 0 0;
+        }
+
+        .mt20 {
+            margin: 20px 0 0 0;
+        }
+
+        .ml-30 {
+            margin: 0 0 0 30px;
+        }
+
+        .mb-10 {
+            margin: 0 0 10px 0;
+        }
+
+        #header {
+            margin-top: 20px;
+            border-radius: 8px;
+            padding-left: 30px;
+            padding-right: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border: solid var(--grey2) 1px;
+            background-color: var(--blue-soft-dark);
+        }
+
+        #footer {
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: solid var(--grey2) 1px;
+            background-color: var(--blue-soft-dark);
+        }
+
+        input {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+
+            min-width: 300px;
+
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: var(--grey2);
+        }
+
+        select {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+
+            min-width: 300px;
+
+            background-color: white;
+
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: var(--grey2);
+        }
+
+        .list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .button-red {
+            color: white;
+            background-color: var(--red);
+        }
+
+        .button-red:hover {
+            background-color: var(--darkerRed);
+        }
+
+        .button-round {
+            border-radius: 20px;
+
+            font-size: 0.8rem;
+            font-weight: bold;
+
+            padding: 4px 11px;
+
+            text-decoration: none;
+        }
+
+        .button-square {
+            border-radius: 5px;
+
+            font-size: 0.8rem;
+            font-weight: bold;
+
+            padding: 4px 11px;
+
+            text-decoration: none;
+        }
+
+        .button-blue {
+            color: white;
+            background-color: var(--blue-primary);
+        }
+
+        .button-blue:hover {
+            background-color: var(--blue-primary-dark);
+        }
+
+        .button-soft-blue {
+            color: var(--blue-soft-text);
+            border: 1px solid var(--blue-soft-dark);
+            background-color: var(--blue-soft);
+        }
+
+        .button-soft-blue:hover {
+            background-color: var(--blue-soft-dark);
+        }
+
+        .button-navbar {
+            color: black;
+            background-color: white;
+        }
+
+        .button-navbar:hover {
+            color: white;
+            background-color: grey;
+        }
+
+        .flex-horizontal {
+            display: flex;
+            align-items: center;
+            gap: 20px
+        }
+
+        .flex-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        @font-face {
+            font-family: 'superBumble'; /*a name to be used later*/
+            src: url('/fonts/LoftygoalsRegular.otf'); /*URL to font*/
+        }
+
+        .logo {
+            font-family: 'superBumble', sans-serif;
+            font-size: 1.85rem;
+            font-weight: bold;
+            margin: 25px 10px;
+
+            color: var(--blue-primary);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 25px 0 10px 0;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 25px 0 0 0;
+        }
+
+        .logo:hover {
+            color: var(--blue-primary-dark);
+        }
+
+
+
+        .admin-section-card {
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: var(--grey2);
+            flex-grow: 1;
+            flex-basis: 150px;
+        }
+
+        .admin-section-card:hover {
+            background-color: var(--blue-soft-dark);
+        }
+
+        .admin-section-card a {
+            flex: 1 1 0;
+            padding: 10px;
+        }
+
+        .admin-section-card a img {
+            height: 50px;
+        }
+
+        .text-decor {
+            text-decoration: underline;
+        }
+
+        .text-grey {
+            color: grey;
+        }
+
+        .list-link {
+            text-decoration: Underline;
+            color: var(--blue-primary);
+        }
+
+        .list-link:hover {
+            text-decoration: none;
+        }
+
+        a {
+            text-decoration: Underline;
+            color: rgb(78, 21, 163);
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .register-link {
+            color: var(--blue-primary);
+        }
+
+        .register-link:hover {
+            color: var(--blue-primary-dark);
+        }
+    }
+</style>

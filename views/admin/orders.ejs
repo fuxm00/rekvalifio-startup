@@ -1,0 +1,30 @@
+<%- include('./parts/_header') %>
+
+<h2>Správa objednávek</h2>
+<div class="content-container">
+
+    <div>
+        <a href="/admin/orders" class="button-round <%= marked === "orders" ? "button-blue" : "button-soft-blue"%>">Příchozí</a>
+        <a href="/admin/orders/archive" class="button-round <%= marked === "archive" ? "button-blue" : "button-soft-blue"%>">Archiv</a>
+    </div>
+
+    <h3>
+
+        <% if (marked === "orders" ) { %>
+            Příchozí objednávky
+        <% } else if  (marked === "archive" ) { %>
+            Archivované objednávky
+        <% } %>
+    </h3>
+
+    <% if ((orders.length >= 1)) { %>
+        <%- include('./parts/_orderList') %>
+    <% } else { %>
+        <div class="content-container">
+            <p>žádné</p>
+        </div>
+    <% } %>
+</div>
+
+<%- include('./parts/scripts/_toast') %>
+<%- include('./parts/_footer') %>

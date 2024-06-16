@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <title><%= title %></title>
+    <%- include('./scripts/_tailwind') %>
+</head>
+<body>
+<div class="master-container">
+    <div id="header">
+        <% if (headerLinks.logoName) { %>
+            <a href="/" id="logo-link">
+                <img id="logo" src="/img/upload/<%= headerLinks.logoName %>">
+            </a>
+        <% } else { %>
+            <p>Logo nezadáno</p>
+        <% } %>
+
+        <div class="flex-horizontal">
+            <% if (headerLinks.facebookLink) { %>
+                <a href="<%= headerLinks.facebookLink %>" id="social-link">
+                    <img id="social-logo" src="/img/facebook.png">
+                </a>
+            <% } %>
+
+            <% if (headerLinks.instagramLink) { %>
+                <a href="<%= headerLinks.instagramLink %>" id="social-link">
+                    <img id="social-logo" src="/img/instagram.png">
+                </a>
+            <% } %>
+
+            <% if (headerLinks.xLink) { %>
+                <a href="<%= headerLinks.xLink %>" id="social-link">
+                    <img id="social-logo" src="/img/x.png">
+                </a>
+            <% } %>
+        </div>
+    </div>
+    <div>

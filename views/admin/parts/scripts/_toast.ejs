@@ -1,0 +1,17 @@
+<% if (toastMessages) { %>
+    <% if (toastMessages.length >= 1) { %>
+        <% for (const message of toastMessages) { %>
+            <script>
+                Toastify({
+                    text: "<%= message.title %>",
+                    duration: 5000,
+                    close: false,
+                    gravity: "top",
+                    position: 'right',
+                    backgroundColor: "<%= message.type === "warning" ? "rgb(217, 29, 64)" : "rgb(99, 102, 241)" %>",
+                    classList: "custom-close-toast",
+                }).showToast();
+            </script>
+        <% } %>
+    <% } %>
+<% } %>

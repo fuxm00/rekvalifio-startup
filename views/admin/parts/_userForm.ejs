@@ -1,0 +1,21 @@
+<div class="flex flex-col items-center">
+    <h2><%= login ? "Přihlášení" : "Registrace"%></h2>
+
+    <form action='<%= login ? "/admin/login" : "/admin/register" %>' method='post' class="flex flex-col items-center">
+        <div>
+            <label>
+                <p>E-mail</p>
+                <input type='text' name='mail' placeholder='E-mail'>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <p>Heslo</p>
+                <input type='password' name='password' placeholder='Heslo'>
+            </label>
+        </div>
+
+        <button type='submit' class="button-square button-blue"><%= login ? "Přihlásit" : "Registrovat"%></button>
+    </form>
+</div>

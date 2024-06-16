@@ -1,0 +1,26 @@
+<div class="content-container">
+    <hr>
+    <% for (const offer of offers) { %>
+        <div class="list">
+            <div class="flex-horizontal">
+                <a href="/admin/offers/<%= offer.id %>" class="button-square button-blue">Nabídka
+                    č. <%= offer.id %></a>
+                <div>
+                    Název: <%= offer.title %>
+                </div>
+                <div>
+                    Kategorie: <%= offer.category.title %>
+                </div>
+                <div>
+                    Datum: <%= offer.formatedStartDate %> - <%= offer.formatedEndDate %>
+                </div>
+            </div>
+            <% if (!expired) { %>
+                <div>
+                    <a href="/admin/offers/remove-offer/<%= offer.id %>" class="button-square button-red">smazat</a>
+                </div>
+            <% } %>
+        </div>
+        <hr>
+    <% } %>
+</div>

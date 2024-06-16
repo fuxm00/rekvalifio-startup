@@ -1,0 +1,93 @@
+<h3>
+    <% if (!offer) { %>
+        Přidat nabídku
+    <% } else { %>
+        Upravit nabídku č. <%= offer.id %>: <%= offer.title %>
+    <% } %>
+</h3>
+
+<div class="content-container">
+    <form method='post' id="offer-form">
+        <div class="flex-horizontal">
+            <div>
+                <label>
+                    <div>Název</div>
+
+                    <input type="text" name="title" placeholder="název nabídky" class="input"
+                    <% if (offer) { %>
+                           value="<%= offer.title %>"
+                            <% } %>
+                    />
+                </label>
+            </div>
+            <div>
+                <div>Kategorie</div>
+                <select name="category">
+                    <option value="" disabled selected>Vyber kategorii</option>
+                    <% for (const category of categories) { %>
+                        <option value="<%= category.id %>"
+
+                        <% if (offer) { %>
+                            <%= category.id === offer.categoryId ? 'selected' : '' %>
+                                <% } %>
+
+                        ><%= category.title %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="flex-horizontal">
+            <div>
+                <label>
+                    <div>Začátek</div>
+                    <input type="date" name="offerStart"
+                           value="<%= offer ? offer.startDate : todayDate %>">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <div>Konec</div>
+                    <input type="date" name="offerEnd"
+                           value="<%= offer ? offer.endDate : todayDate %>">
+                </label>
+            </div>
+        </div>
+
+        <div class="center-button">
+            <button type='submit' class="button-square button-blue mt20" id="primaryAction">
+                <% if (!offer) { %>
+                    přidat
+                <% } else { %>
+                    upravit
+                <% } %>
+            </button>
+            <% if (offer) { %>
+                <button type='submit' class="button-square button-soft-blue mt20 ml-4" id="secondaryAction">
+                    vytvořit jako novou
+                </button>
+                <div class="mt20 ml-4">
+                    <a href="/admin/offers/remove-offer/<%= offer.id %>" class="button-square button-red">smazat</a>
+                </div>
+            <% } %>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    document.getElementById('primaryAction').addEventListener('click', function () {
+        <% if (offer) { %>
+        document.getElementById('offer-form').action = '/admin/offers/edit-offer/<%= offer.id %>';
+        <% } else { %>
+        document.getElementById('offer-form').action = '/admin/offers/add-offer';
+        <% } %>
+    });
+
+    <% if (offer) { %>
+    document.getElementById('secondaryAction').addEventListener('click', function () {
+        document.getElementById('offer-form').action = '/admin/offers/add-offer';
+    });
+    <% } %>
+</script>

@@ -1,0 +1,27 @@
+<%- include('./parts/_header') %>
+<%- include('./parts/_navbar') %>
+<div class="flex-container flex-space-between content-container">
+    <div>
+        <%- category.content %>
+
+        <h2>Typy kurzů</h2>
+
+        <% if ((courses.length >= 1)) { %>
+            <ul class="content-container list">
+                <% for (const course of courses) { %>
+                    <li class="ml-30"><a href="/course/<%= course.id %>" class="list-link-item"><%= course.title %></a></li>
+                <% } %>
+            </ul>
+        <% } else { %>
+            <div class="ml-30">
+                žádné
+            </div>
+        <% } %>
+    </div>
+    <div id="home-offers">
+        <%- include('./parts/_homeOffers') %>
+    </div>
+</div>
+
+
+<%- include('./parts/_footer') %>

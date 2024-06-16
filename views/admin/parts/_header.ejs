@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
+          type='text/css'/>
+    <%- include('./scripts/_tailwind') %>
+    <script type='text/javascript'
+            src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+<body class="body">
+<div class="master-container">
+    <div id="header">
+        <a href="/admin" class="no-underline">
+            <h1 class="logo">REKVALIFIO</h1>
+        </a>
+        <div>
+            <% if (user) { %>
+                Uživatel: <%= user.mail %>
+                <a href="/admin/logout" class="button-round button-blue ml-4">Odhlásit</a>
+            <% } else { %>
+                <a href="/admin/login" class="button-round button-blue">Přihlášení</a>
+                <a href="/admin/register" class="text-sm font-bold no-underline register-link ml-4">Registrace</a>
+            <% } %>
+        </div>
+    </div>
+    <div class="content-container">

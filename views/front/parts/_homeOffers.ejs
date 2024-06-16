@@ -1,0 +1,16 @@
+<% if (offers.length > 0) { %>
+    <div id="offer-heading-box" class="mt-5">
+        <h2 id="offer-heading">Aktuálně probíhá:</h2>
+    </div>
+
+
+    <ul id="offers-list">
+        <% for (const offer of offers) { %>
+            <li class="offer-item">
+                <a href="/course-category/<%= offer.categoryId %>"
+                   class="offer-item-link"><%= offer.formatedStartDate %>
+                    - <%= offer.formatedEndDate %> - <%= offer.title %></a>
+            </li>
+        <% } %>
+    </ul>
+<% } %>

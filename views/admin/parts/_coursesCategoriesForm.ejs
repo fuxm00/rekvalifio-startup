@@ -1,0 +1,72 @@
+<h3>
+    <% if (category) { %>
+        Upravit kategrii č. <%= category.id %>: <%= category.title %>
+    <% } else { %>
+        Přidat kategorii
+    <% } %>
+</h3>
+
+<div class="content-container">
+    <form action='/admin/courses/<%= category ? `edit-category/${category.id}` : "add-category" %>' method='post'>
+        <div class="flex-horizontal">
+            <div>
+                <label>
+                    <div>Název</div>
+                    <input type="text" name="categoryTitle"
+                           placeholder="<%= category ? category.title : "název kategorie" %>"
+                           class="input"
+                    <% if (category) { %>
+                           value="<%= category.title %>"
+                    <% } else { %>
+                           value="<%= sessionCategory ? sessionCategory.title : null %>"
+                            <% } %>
+                    />
+                </label>
+            </div>
+
+            <div>
+                <div>Typ</div>
+                <select name="typeId">
+                    <option value="" disabled selected>Vyber typ</option>
+                    <% for (const type of types) { %>
+                        <option value="<%= type.id %>"
+
+                        <% if (category) { %>
+                            <%= type.id === category.typeId ? 'selected' : '' %>
+                        <% } else { %>
+                            <% if (sessionCategory) { %>
+                                <%= type.id === sessionCategory.typeId ? 'selected' : '' %>
+                                    <% } %>
+                                <% } %>
+                        ><%= type.title %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div>Obsah</div>
+        <textarea id="categoryContent" name="categoryContent"></textarea>
+
+
+        <div class="center-button">
+            <button type='submit' class="button-square button-blue mt20">
+                <% if (category) { %>
+                    Upravit
+                <% } else { %>
+                    Přidat
+                <% } %>
+            </button>
+        </div>
+    </form>
+
+    <script>
+        const toolbarButtons = ['fullscreen', '|', 'bold', 'italic', 'underline', '|', 'fontFamily', 'fontSize', '|', 'paragraphFormat', '|', 'align', 'formatOL', 'formatUL', '|', 'insertLink', '|', 'insertHR', '|', 'undo', 'redo']
+
+        new FroalaEditor('#categoryContent', {
+            toolbarButtons: toolbarButtons
+        }, function () {
+            this.html.set('<%- category ? category.content : sessionCategory ? sessionCategory.content : null %>');
+        })
+    </script>
+
+</div>

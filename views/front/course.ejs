@@ -1,0 +1,17 @@
+<%- include('./parts/_header') %>
+<%- include('./parts/_navbar') %>
+
+<div class="flex-container flex-space-between content-container">
+    <div>
+        <%- course.content %>
+        <div class="order-button-container">
+            <a href="/course/order/<%= course.id %>" class="button-square button-blue">Objednat</a>
+        </div>
+
+    </div>
+    <div id="home-offers">
+        <%- include('./parts/_homeOffers') %>
+    </div>
+</div>
+
+<%- include('./parts/_footer') %>
